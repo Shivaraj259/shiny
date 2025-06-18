@@ -1,4 +1,6 @@
 library(shiny)
+library(tidyverse)
+
 
 
 ui <- fluidPage(
@@ -13,7 +15,7 @@ server <- function(input, output, session) {
     iris%>%
       filter(Species==input$species)%>%
       ggplot(aes(x=Sepal.Length,y=Sepal.Width))+
-      geom_point()+
+      geom_point(size=3)+
       labs(title=input$species)
   })
   
