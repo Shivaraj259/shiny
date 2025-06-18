@@ -26,16 +26,19 @@ server <- function(input, output, session) {
   })
   
   observeEvent(input$click,{
-    print(paste0("button clicked",input$click))
+    print(paste0("button clicked: ",input$click))
     output$pl <- renderPlot({
       print("in renderplot pl")
       data3() %>% 
         ggplot(aes(x,y,colour = z))+
-        geom_point(size=10)
-      labels(title = "simple analyzing data")
+        geom_point(size=10)+
+      labs(title = "simple analyzing data")
     })
   })
   
 }
 
 shinyApp(ui, server)
+
+
+
